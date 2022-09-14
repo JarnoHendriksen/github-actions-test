@@ -30,4 +30,5 @@ jobs:
         run: |
           docker pull fairsoftware/howfairis
       - name: Run howfairis
-        run: docker run --rm fairsoftware/howfairis --help
+        run: |
+          echo "::set-output name=hfi-out::$(docker run --rm fairsoftware/howfairis)\n"
