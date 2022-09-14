@@ -29,4 +29,5 @@ jobs:
       - name: Load howfairis
         run: |
           docker pull fairsoftware/howfairis
-          docker run --rm fairsoftware/howfairis
+      - name: Run howfairis
+        run: docker run --rm fairsoftware/howfairis
