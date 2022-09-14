@@ -30,4 +30,4 @@ jobs:
         run: |
           docker pull fairsoftware/howfairis
       - name: Run howfairis
-        run: docker run --rm fairsoftware/howfairis
+        run: docker run --rm fairsoftware/howfairis --help
