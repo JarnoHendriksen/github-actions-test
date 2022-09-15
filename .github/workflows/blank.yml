@@ -30,8 +30,4 @@ jobs:
         id: hfi-exec
         run: |
           pip3 install --user howfairis
-          echo "::set-output name=hfi-out::$(howfairis https://github.com/JarnoHendriksen/github-actions-test)\n"
-
-      - name: Parse howfairis output
-        uses: parse-hfi.js
-          with: $({ steps.hfi-exec.outputs.hfi-out })
+          howfairis https://github.com/JarnoHendriksen/github-actions-test
