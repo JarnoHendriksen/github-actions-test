@@ -28,7 +28,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Load howfairis
         run: |
-          docker pull fairsoftware/howfairis
-      - name: Run howfairis
-        run: |
-          echo "::set-output name=hfi-out::$(docker run --rm fairsoftware/howfairis)\n"
+          pip3 install --user howfairis
+          howfairis https://github.com/JarnoHendriksen/github-actions-test
