@@ -26,9 +26,12 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Load howfairis
+      - name: Install howfairis
+        id: hfi-exec
         run: |
-          docker pull fairsoftware/howfairis
-      - name: Run howfairis
-        run: |
-          echo "::set-output name=hfi-out::$(docker run --rm fairsoftware/howfairis)\n"
+          pip3 install --user howfairis
+          echo "::set-output name=hfi-out::$(howfairis https://github.com/JarnoHendriksen/github-actions-test)\n"
+
+      - name: Parse howfairis output
+        uses: parse-hfi.js
+          with: $({ steps.hfi-exec.outputs.hfi-out })
