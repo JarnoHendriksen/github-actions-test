@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Get data from the database
         run: |
-          echo docker run --name controller-container --entrypoint="./controller/build/searchseco" -e "github_token=${{secrets.GITHUB_TOKEN}}" -e "worker_name=GekkeHarrie" searchseco/controller check https://github.com/SecureSECO/SearchSECOController
+          docker run --name controller-container --entrypoint="./controller/build/searchseco" -e "github_token=${{secrets.GITHUB_TOKEN}}" -e "worker_name=GekkeHarrie" searchseco/controller check https://github.com/SecureSECO/SearchSECOController
         
       - name: Annotate PR
         uses: JarnoHendriksen/github-actions-test@main
