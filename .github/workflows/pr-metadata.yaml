@@ -10,6 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Annotates pull request with metadata
     steps:
+      - name: Get data from the database
+        run: |
+          MATCHES="$(docker run --name controller-container --entrypoint="./controller/build/searchseco" -e "github_token=${{secrets.GITHUB_TOKEN}}" -e "worker_name=GekkeHarrie" searchseco/controller check https://github.com/SecureSECO/SearchSECOController)"
+          MATCHES="${MATCHES//'%'/'%25'}"
+          MATCHES="${MATCHES//$'\n'/'%0A'}"
+          MATCHES="${MATCHES//$'\r'/'%0D'}"
+          echo "::set-output name=matches::$MATCHES"
+        id: database
+        
       - name: Annotate PR
         uses: JarnoHendriksen/github-actions-test/PR-metadata-action@main
         with:
