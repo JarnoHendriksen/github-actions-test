@@ -14,4 +14,4 @@ jobs:
               with:
                   name: tortellini-result
                   path: .tortellini/out
-            - uses: JarnoHendriksen/test@main
+            - uses: JarnoHendriksen/test/.github/workflows/tortellini.yml@main
